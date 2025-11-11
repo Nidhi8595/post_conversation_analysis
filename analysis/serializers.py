@@ -2,9 +2,10 @@ from rest_framework import serializers
 from .models import Conversation, Message, ConversationAnalysis
 
 class MessageSerializer(serializers.ModelSerializer):
+    conversation = serializers.PrimaryKeyRelatedField(queryset=Conversation.objects.all())
     class Meta:
         model = Message
-        fields = ['id', 'sender', 'text']
+        fields = ['id', 'conversation', 'sender', 'text']
 
 class ConversationSerializer(serializers.ModelSerializer):
     messages = MessageSerializer(many=True, read_only=True)
@@ -14,7 +15,7 @@ class ConversationSerializer(serializers.ModelSerializer):
         fields = ['id', 'title', 'created_at', 'messages']
 
 class ConversationAnalysisSerializer(serializers.ModelSerializer):
-    conversation = serializers.PrimaryKeyRelatedField(read_only=True)
+    conversation = serializers.PrimaryKeyRelatedField(queryset=Conversation.objects.all())
 
     class Meta:
         model = ConversationAnalysis
