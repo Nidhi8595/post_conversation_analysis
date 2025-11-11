@@ -22,14 +22,14 @@ jobs:
 
       - name: Run migrations
         env:
-          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}       # Optional, if your app uses
           DJANGO_SECRET_KEY: ${{ secrets.DJANGO_SECRET_KEY }}
         run: |
           python manage.py migrate
 
       - name: Collect static files
         env:
-          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}       # Optional
           DJANGO_SECRET_KEY: ${{ secrets.DJANGO_SECRET_KEY }}
         run: |
           python manage.py collectstatic --noinput
@@ -38,5 +38,5 @@ jobs:
         uses: akhileshns/heroku-deploy@v3.12.12
         with:
           heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
-          heroku_app_name: postconversationanalysis
-          heroku_email: neelakshikadyan@gmail.com
+          heroku_app_name: postconversationanalysis       # Replace with your real Heroku app name
+          heroku_email: neelakshikadyan@gmail.com          # Your Heroku account email
