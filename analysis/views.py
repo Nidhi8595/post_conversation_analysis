@@ -1,4 +1,15 @@
-from django.http import HttpResponse
+from rest_framework import generics
+from .models import Conversation, Message, ConversationAnalysis
+from .serializers import ConversationSerializer, MessageSerializer, ConversationAnalysisSerializer
 
-def home(request):
-    return HttpResponse("Welcome to Post-Conversation Analysis API")
+class ConversationListCreateView(generics.ListCreateAPIView):
+    queryset = Conversation.objects.all()
+    serializer_class = ConversationSerializer
+
+class MessageListCreateView(generics.ListCreateAPIView):
+    queryset = Message.objects.all()
+    serializer_class = MessageSerializer
+
+class ConversationAnalysisListCreateView(generics.ListCreateAPIView):
+    queryset = ConversationAnalysis.objects.all()
+    serializer_class = ConversationAnalysisSerializer
