@@ -25,7 +25,7 @@ SECRET_KEY = "django-insecure-pvn9qtjjbp5%1v&7=+8bqjtw#osip338y$7_+bzejvj04n($7@
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['your-heroku-app-name.herokuapp.com', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['https://post-conversation-analysis.onrender.com', 'localhost', '127.0.0.1']
 
 
 
